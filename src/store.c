@@ -1,8 +1,8 @@
 #include "fractol.h"
 
-t_ds	*store()
+t_db	*db()
 {
-	static t_ds	st;
+	static t_db	db;
 	
-	return (&st);
+	return (&db);
 }

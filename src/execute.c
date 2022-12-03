@@ -11,7 +11,7 @@ t_i32	execute()
 	regist_hook();
 	init_fractol();
 	render();
-	mlx_loop(store()->mlx);
+	mlx_loop(db()->mlx);
 	return (0);
 }
 
@@ -20,18 +20,18 @@ static t_i32	initialize()
 	t_i32	try;
 	
 	try = 0;
-	while (store()->mlx == NULL && try++ < 100)
-		store()->mlx = mlx_init();
-	while (store()->win == NULL && try++ < 100)
-		store()->win = mlx_new_window(store()->mlx, WIDTH, HEIGHT, "APP");
-	while (store()->dat.img == NULL && try++ < 100)
-		store()->dat.img = mlx_new_image(store()->mlx, WIDTH, HEIGHT);
-	while (store()->dat.addr == NULL && try++ < 100)
-		store()->dat.addr = mlx_get_data_addr(
-			store()->dat.img,
-			&(store()->dat.bpp),
-			&(store()->dat.llen),
-			&(store()->dat.endian));
+	while (db()->mlx == NULL && try++ < 100)
+		db()->mlx = mlx_init();
+	while (db()->win == NULL && try++ < 100)
+		db()->win = mlx_new_window(db()->mlx, WIDTH, HEIGHT, "Fractal");
+	while (db()->dat.img == NULL && try++ < 100)
+		db()->dat.img = mlx_new_image(db()->mlx, WIDTH, HEIGHT);
+	while (db()->dat.addr == NULL && try++ < 100)
+		db()->dat.addr = mlx_get_data_addr(
+			db()->dat.img,
+			&(db()->dat.bpp),
+			&(db()->dat.llen),
+			&(db()->dat.endian));
 	if (try > 100)
 		return (-1);
 	return (0);
@@ -39,16 +39,16 @@ static t_i32	initialize()
 
 static void	regist_hook()
 {
-	mlx_hook(store()->win, DESTROY, 0, quit, NULL);
-	mlx_hook(store()->win, KEYDOWN, 0, key_press, NULL);
-	mlx_mouse_hook(store()->win, mouse_hook, NULL);
+	mlx_hook(db()->win, DESTROY, 0, quit, NULL);
+	mlx_hook(db()->win, KEYDOWN, 0, key_press, NULL);
+	mlx_mouse_hook(db()->win, mouse_hook, NULL);
 }
 
 static void	init_fractol()
 {
-	store()->frac.min_re = -2.0f;
-	store()->frac.max_re = 2.0f;
-	store()->frac.min_im = -2.0f;
-	store()->frac.max_im = 2.0f;
-	store()->frac.max_iter = 50;
+	db()->frac.min_re = -2.0f;
+	db()->frac.max_re = 2.0f;
+	db()->frac.min_im = -2.0f;
+	db()->frac.max_im = 2.0f;
+	db()->frac.it_max = 50;
 }

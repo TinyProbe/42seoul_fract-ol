@@ -1,6 +1,6 @@
 #include "fractol.h"
 
-static t_i32	which_fractol(t_i8 *av);
+static void		*which_fractol(t_i8 *av);
 static t_i32	error();
 static void		manual();
 
@@ -13,18 +13,18 @@ t_i32	main(t_i32 ac, t_i8 **av)
 	exit(0);
 }
 
-static t_i32	which_fractol(t_i8 *av)
+static void	*which_fractol(t_i8 *av)
 {
 	if (ft_strcmp(av, "1") == EQUAL ||
 		ft_strcmp(av, "mandelbrot") == EQUAL)
-		store()->frac.fractol = MANDELBROT;
+		db()->frac.ftr = mandelbrot;
 	else if (ft_strcmp(av, "2") == EQUAL ||
 		ft_strcmp(av, "julia") == EQUAL)
-		store()->frac.fractol = JULIA;
+		db()->frac.ftr = julia;
 	else if (ft_strcmp(av, "3") == EQUAL ||
 		ft_strcmp(av, "mandelbar") == EQUAL)
-		store()->frac.fractol = MANDELBAR;
-	return (store()->frac.fractol);
+		db()->frac.ftr = mandelbar;
+	return (db()->frac.ftr);
 }
 
 static t_i32	error()

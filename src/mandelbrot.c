@@ -1,18 +1,18 @@
 #include "fractol.h"
 
-t_i32	mandelbrot(t_frac *frac)
+t_i32	mandelbrot()
 {
-	t_i32		iter;
-	t_complex	z;
-
-	iter = 0;
-	z = make_complex(frac->c.re, frac->c.im);
-	while (pow(z.re, 2) + pow(z.im, 2) <= 4 && iter < frac->max_iter)
+	db()->frac.z = (t_cpx) { db()->frac.c.re, db()->frac.c.im };
+	db()->frac.it_cur = -1;
+	while (pow(db()->frac.z.re, 2) + pow(db()->frac.z.im, 2) <= MAX_ABS
+			&& ++(db()->frac.it_cur) < db()->frac.it_max)
 	{
-		z = make_complex(
-			pow(z.re, 2) - pow(z.im, 2) + frac->c.re,
-			2.0 * z.re * z.im + frac->c.im);
-		iter++;
+		db()->frac.z.re =
+			pow(db()->frac.z.re, 2) - pow(db()->frac.z.im, 2)
+			+ db()->frac.c.re;
+		db()->frac.z.im =
+			2 * db()->frac.z.re * db()->frac.z.im
+			+ db()->frac.c.im;
 	}
-	return (iter);
+	return (db()->frac.it_cur);
 }
