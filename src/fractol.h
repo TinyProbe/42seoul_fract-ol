@@ -4,6 +4,9 @@
 # define HEIGHT		500
 # define WIDTH		500
 # define MAX_ABS	2.0
+# define IT_MAX		10
+# define IT_MAX_MAX	100
+# define IT_MAX_MIN	1
 
 # include "../ft/ft.h"
 # include "../mlx/mlx.h"
@@ -22,6 +25,9 @@ enum e_color
 enum e_keycode
 {
 	KEY_ESC		= 0x35,
+	KEY_0		= 0x1D,
+	KEY_MINUS	= 0x1B,
+	KEY_EQUAL	= 0x18,
 };
 
 enum e_mousecode
@@ -113,6 +119,9 @@ t_i32	key_press(t_i32 keycode, t_db *st);
 t_i32	mouse_hook(t_i32 mousecode, t_i32 x, t_i32 y, t_db *st);
 void	scroll_up(t_i32 x, t_i32 y);
 void	scroll_down(t_i32 x, t_i32 y);
+void	it_reset();
+void	it_incre();
+void	it_decre();
 
 t_i32	mandelbrot();
 t_i32	julia();

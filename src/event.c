@@ -5,6 +5,12 @@ t_i32	key_press(t_i32 keycode, t_db *st)
 	(void) st;
 	if (keycode == KEY_ESC)
 		quit();
+	else if (keycode == KEY_0)
+		it_reset();
+	else if (keycode == KEY_MINUS)
+		it_decre();
+	else if (keycode == KEY_EQUAL)
+		it_incre();
 	return (0);
 }
 

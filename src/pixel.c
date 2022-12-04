@@ -19,18 +19,22 @@ void	set_axis(t_axs ax)
 
 void	gen_color(t_i32 it)
 {
-	// generate color from iteration.
-	// and set pix.color
+	t_f64 unit;
+
+	unit = (t_f64) 0xff / db()->frac.it_max;
+	mlx_set_color(&(db()->dat.pix.color), 0xff - it * unit, RED);
+	mlx_set_color(&(db()->dat.pix.color), 0xff - it * unit, GREEN);
+	mlx_set_color(&(db()->dat.pix.color), 0xff - it * unit, BLUE);
 }
 
 static t_axs	ctoa(t_cpx cx)
 {
 	t_axs	tmp;
 	
-	cx.re += 2.0;
-	cx.im += 2.0;
-	tmp.x = cx.re / (4.0 / WIDTH);
-	tmp.y = cx.im / (4.0 / HEIGHT);
+	cx.re += MAX_ABS;
+	cx.im += MAX_ABS;
+	tmp.x = cx.re / (pow(MAX_ABS, 2) / WIDTH);
+	tmp.y = cx.im / (pow(MAX_ABS, 2) / HEIGHT);
 	return (tmp);
 }
 
@@ -38,9 +42,9 @@ static t_cpx	atoc(t_axs ax)
 {
 	t_cpx	tmp;
 	
-	tmp.re = -2.0;
-	tmp.im = -2.0;
-	tmp.re += 4.0 / WIDTH * ax.x;
-	tmp.im += 4.0 / HEIGHT * ax.y;
+	tmp.re = db()->frac.min_re;
+	tmp.im = db()->frac.min_im;
+	tmp.re += pow(MAX_ABS, 2) / WIDTH * ax.x;
+	tmp.im += pow(MAX_ABS, 2) / HEIGHT * ax.y;
 	return (tmp);
 }

@@ -16,25 +16,36 @@ MLX			= $(MLX_DIR)libmlx.a
 
 SRC_DIR		= ./src/
 SRC_LST		= main.c		\
+			  store.c		\
 			  execute.c		\
-			  event.c		\
+			  pixel.c		\
+			  render.c		\
 			  quit.c		\
+			  event.c		\
 			  scroll_up.c	\
 			  scroll_down.c	\
+			  iter.c		\
+			  mandelbrot.c	\
+			  julia.c		\
+			  mandelbar.c	\
 			  mlx_extend.c
 SRC			= $(addprefix $(SRC_DIR), $(SRC_LST))
+INC			= ./src/fractol.h
 
 SRC_B_DIR	= ./src/
 SRC_B_LST	= main_bonus.c
 SRC_B		= $(addprefix $(SRC_B_DIR), $(SRC_B_LST))
+INC_B		= ./src/fractol_bonus.h
 
 ifdef B
 	SEL = $(SRC_B)
+	SELI = $(INC_B)
 else
 	SEL = $(SRC)
+	SELI = $(INC)
 endif
 
-$(NAME): $(FT) $(MLX) $(SEL)
+$(NAME): $(FT) $(MLX) $(SEL) $(SELI)
 	$(CC) $(CCFLAG) $(SEL) $(LIB) -o $(NAME)
 
 $(FT):
@@ -55,7 +66,6 @@ clean:
 fclean: clean
 	$(RM) $(FT) $(MLX) $(NAME)
 
-re:
-	make fclean all
+re: fclean all
 
 .PHONY: all bonus clean fclean re

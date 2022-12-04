@@ -50,5 +50,5 @@ static void	init_fractol()
 	db()->frac.max_re = 2.0f;
 	db()->frac.min_im = -2.0f;
 	db()->frac.max_im = 2.0f;
-	db()->frac.it_max = 50;
+	db()->frac.it_max = IT_MAX;
 }

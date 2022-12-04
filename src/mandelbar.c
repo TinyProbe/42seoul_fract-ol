@@ -4,8 +4,8 @@ t_i32	mandelbar()
 {
 	db()->frac.z = (t_cpx) { db()->frac.c.re, db()->frac.c.im };
 	db()->frac.it_cur = -1;
-	while (pow(db()->frac.z.re, 2) + pow(db()->frac.z.im, 2) <= MAX_ABS
-			&& ++(db()->frac.it_cur) < db()->frac.it_max)
+	while (pow(db()->frac.z.re, 2) + pow(db()->frac.z.im, 2)
+			<= pow(MAX_ABS, 2) && ++(db()->frac.it_cur) < db()->frac.it_max)
 	{
 		db()->frac.z.re =
 			pow(db()->frac.z.re, 2) - pow(db()->frac.z.im, 2)
