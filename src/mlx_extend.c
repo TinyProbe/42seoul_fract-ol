@@ -2,7 +2,7 @@
 
 void	mlx_pixel_put2(t_dat *data, t_i32 x, t_i32 y, t_i32 color)
 {
-	*(t_u32 *) (data->addr + (y * data->llen + x * (data->bpp / 8))) = color;
+	*(t_u32 *)(data->addr + (y * data->llen + x * (data->bpp / 8))) = color;
 }
 
 t_i32	mlx_get_color(t_i32 color, t_i32 which)

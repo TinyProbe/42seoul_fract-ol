@@ -16,7 +16,7 @@ MLX			= $(MLX_DIR)libmlx.a
 
 SRC_DIR		= ./src/
 SRC_LST		= main.c		\
-			  store.c		\
+			  util.c		\
 			  execute.c		\
 			  pixel.c		\
 			  render.c		\

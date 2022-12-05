@@ -1,54 +1,46 @@
 #include "fractol.h"
 
-static t_i32	initialize();
-static void		regist_hook();
-static void		init_fractol();
+static t_i32	initialize(t_db *db);
+static void		regist_hook(t_db *db);
+static void		init_fractol(t_db *db);
 
-t_i32	execute()
+t_i32	execute(t_db *db)
 {
-	if (initialize())
+	if (initialize(db))
 		return (-1);
-	regist_hook();
-	init_fractol();
-	render();
-	mlx_loop(db()->mlx);
+	regist_hook(db);
+	init_fractol(db);
+	render(db);
+	mlx_loop(db->mlx);
 	return (0);
 }
 
-static t_i32	initialize()
+static t_i32	initialize(t_db *db)
 {
-	t_i32	try;
-	
-	try = 0;
-	while (db()->mlx == NULL && try++ < 100)
-		db()->mlx = mlx_init();
-	while (db()->win == NULL && try++ < 100)
-		db()->win = mlx_new_window(db()->mlx, WIDTH, HEIGHT, "Fractal");
-	while (db()->dat.img == NULL && try++ < 100)
-		db()->dat.img = mlx_new_image(db()->mlx, WIDTH, HEIGHT);
-	while (db()->dat.addr == NULL && try++ < 100)
-		db()->dat.addr = mlx_get_data_addr(
-			db()->dat.img,
-			&(db()->dat.bpp),
-			&(db()->dat.llen),
-			&(db()->dat.endian));
-	if (try > 100)
+	db->init_try = 0;
+	while (db->mlx == NULL && db->init_try++ < TRY_LIMIT)
+		db->mlx = mlx_init();
+	while (db->win == NULL && db->init_try++ < TRY_LIMIT)
+		db->win = mlx_new_window(db->mlx, WIDTH, HEIGHT, "Fractal");
+	while (db->dat.img == NULL && db->init_try++ < TRY_LIMIT)
+		db->dat.img = mlx_new_image(db->mlx, WIDTH, HEIGHT);
+	while (db->dat.addr == NULL && db->init_try++ < TRY_LIMIT)
+		db->dat.addr = mlx_get_data_addr(db->dat.img, &(db->dat.bpp),
+				&(db->dat.llen), &(db->dat.endian));
+	if (db->init_try > TRY_LIMIT)
 		return (-1);
 	return (0);
 }
 
-static void	regist_hook()
+static void	regist_hook(t_db *db)
 {
-	mlx_hook(db()->win, DESTROY, 0, quit, NULL);
-	mlx_hook(db()->win, KEYDOWN, 0, key_press, NULL);
-	mlx_mouse_hook(db()->win, mouse_hook, NULL);
+	mlx_hook(db->win, DESTROY, 0, quit, db);
+	mlx_hook(db->win, KEYDOWN, 0, key_press, db);
+	mlx_mouse_hook(db->win, mouse_hook, db);
 }
 
-static void	init_fractol()
+static void	init_fractol(t_db *db)
 {
-	db()->frac.min_re = -2.0f;
-	db()->frac.max_re = 2.0f;
-	db()->frac.min_im = -2.0f;
-	db()->frac.max_im = 2.0f;
-	db()->frac.it_max = IT_MAX;
+	db->frac.k = make_cpx(-0.4, 0.6);
+	db->frac.it_max = IT_MAX_INIT;
 }

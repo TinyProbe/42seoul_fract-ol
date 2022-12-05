@@ -1,12 +1,13 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# define HEIGHT		500
-# define WIDTH		500
-# define MAX_ABS	2.0
-# define IT_MAX		10
-# define IT_MAX_MAX	100
-# define IT_MAX_MIN	1
+# define HEIGHT			600
+# define WIDTH			600
+# define TRY_LIMIT		100
+# define MAX_ABS		2.0
+# define IT_MAX_INIT	50
+# define IT_MAX_MAX		100
+# define IT_MAX_MIN		1
 
 # include "../ft/ft.h"
 # include "../mlx/mlx.h"
@@ -71,11 +72,7 @@ typedef struct s_pix
 
 typedef struct s_frac
 {
-	t_i32	(*ftr)();
-	t_f64	max_re;
-	t_f64	min_re;
-	t_f64	max_im;
-	t_f64	min_im;
+	void	(*ftr)();
 	t_i32	it_cur;
 	t_i32	it_max;
 	t_cpx	z;
@@ -95,6 +92,7 @@ typedef struct s_dat
 
 typedef struct s_db
 {
+	t_i32	init_try;
 	void	*mlx;
 	void	*win;
 	t_dat	dat;
@@ -105,26 +103,27 @@ void	mlx_pixel_put2(t_dat *data, t_i32 x, t_i32 y, t_i32 color);
 t_i32	mlx_get_color(t_i32 color, t_i32 which);
 void	mlx_set_color(t_i32 *color, t_i32 to, t_i32 which);
 
-t_db	*db();
+t_cpx	make_cpx(t_f64 re, t_f64 im);
+t_axs	make_axs(t_i32 x, t_i32 y);
 
-t_i32	execute();
-void	render();
+t_i32	execute(t_db *db);
+void	render(t_db *db);
 
-void	set_complex(t_cpx cx);
-void	set_axis(t_axs ax);
-void	gen_color(t_i32 it);
+void	set_complex(t_db *db, t_cpx cx);
+void	set_axis(t_db *db, t_axs ax);
+void	gen_color(t_db *db);
 
-t_i32	quit();
-t_i32	key_press(t_i32 keycode, t_db *st);
-t_i32	mouse_hook(t_i32 mousecode, t_i32 x, t_i32 y, t_db *st);
-void	scroll_up(t_i32 x, t_i32 y);
-void	scroll_down(t_i32 x, t_i32 y);
-void	it_reset();
-void	it_incre();
-void	it_decre();
+t_i32	quit(void);
+t_i32	key_press(t_i32 keycode, t_db *db);
+t_i32	mouse_hook(t_i32 mousecode, t_i32 x, t_i32 y, t_db *db);
+void	scroll_up(t_i32 x, t_i32 y, t_db *db);
+void	scroll_down(t_i32 x, t_i32 y, t_db *db);
+void	it_reset(t_db *db);
+void	it_incre(t_db *db);
+void	it_decre(t_db *db);
 
-t_i32	mandelbrot();
-t_i32	julia();
-t_i32	mandelbar();
+void	mandelbrot(t_db *db);
+void	julia(t_db *db);
+void	mandelbar(t_db *db);
 
 #endif

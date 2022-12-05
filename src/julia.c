@@ -1,18 +1,14 @@
 #include "fractol.h"
 
-t_i32	julia()
+void	julia(t_db *db)
 {
-	db()->frac.z = (t_cpx) { db()->frac.c.re, db()->frac.c.im };
-	db()->frac.it_cur = -1;
-	while (pow(db()->frac.z.re, 2) + pow(db()->frac.z.im, 2)
-			<= pow(MAX_ABS, 2) && ++(db()->frac.it_cur) < db()->frac.it_max)
+	db->frac.z = db->frac.c;
+	db->frac.it_cur = -1;
+	while (++(db->frac.it_cur) < db->frac.it_max
+		&& pow(db->frac.z.re, 2) + pow(db->frac.z.im, 2) <= pow(MAX_ABS, 2))
 	{
-		db()->frac.z.re =
-			pow(db()->frac.z.re, 2) - pow(db()->frac.z.im, 2)
-			+ db()->frac.k.re;
-		db()->frac.z.im =
-			2 * db()->frac.z.re * db()->frac.z.im
-			+ db()->frac.k.im;
+		db->frac.z = make_cpx(
+				pow(db->frac.z.re, 2) - pow(db->frac.z.im, 2) + db->frac.k.re,
+				2 * db->frac.z.re * db->frac.z.im + db->frac.k.im);
 	}
-	return (db()->frac.it_cur);
 }
