@@ -13,11 +13,9 @@ t_i32	key_press(t_i32 keycode, t_db *db)
 	return (0);
 }
 
-t_i32	mouse_hook(t_i32 mousecode, t_i32 x, t_i32 y, t_db *db)
+t_i32	mouse_down(t_i32 code, t_i32 x, t_i32 y, t_db *db)
 {
-	if (mousecode == SCROLL_UP)
-		scroll_up(x, y, db);
-	else if (mousecode == SCROLL_DOWN)
-		scroll_down(x, y, db);
+	if (code == SCROLL_UP || code == SCROLL_DOWN)
+		zoom(code, x, y, db);
 	return (0);
 }

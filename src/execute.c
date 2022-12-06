@@ -36,11 +36,13 @@ static void	regist_hook(t_db *db)
 {
 	mlx_hook(db->win, DESTROY, 0, quit, db);
 	mlx_hook(db->win, KEYDOWN, 0, key_press, db);
-	mlx_mouse_hook(db->win, mouse_hook, db);
+	mlx_hook(db->win, MOUSEDOWN, 0, mouse_down, db);
 }
 
 static void	init_fractol(t_db *db)
 {
+	db->frac.max = make_cpx(MAX_ABS, MAX_ABS);
+	db->frac.min = make_cpx(-MAX_ABS, -MAX_ABS);
 	db->frac.k = make_cpx(-0.4, 0.6);
 	db->frac.it_max = IT_MAX_INIT;
 }

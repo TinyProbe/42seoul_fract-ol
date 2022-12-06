@@ -22,8 +22,7 @@ SRC_LST		= main.c		\
 			  render.c		\
 			  quit.c		\
 			  event.c		\
-			  scroll_up.c	\
-			  scroll_down.c	\
+			  zoom.c		\
 			  iter.c		\
 			  mandelbrot.c	\
 			  julia.c		\
