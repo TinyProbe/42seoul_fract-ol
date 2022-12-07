@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 09:57:16 by tkong             #+#    #+#             */
-/*   Updated: 2022/10/28 10:10:07 by tkong            ###   ########.fr       */
+/*   Updated: 2022/12/07 16:38:15 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 t_i32	ft_strncmp(const t_i8 *s1, const t_i8 *s2, size_t n)
 {
-	n = ft_min(n, ft_strlen(s1));
-	n = ft_min(n, ft_strlen(s2));
+	n = ft_min(n, ft_strlen(s1) + 1);
+	n = ft_min(n, ft_strlen(s2) + 1);
 	return (ft_memcmp(s1, s2, n));
 }
 

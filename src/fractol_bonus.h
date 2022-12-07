@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.h                                          :+:      :+:    :+:   */
+/*   fractol_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkong <tkong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/07 15:49:04 by tkong             #+#    #+#             */
-/*   Updated: 2022/12/07 15:49:22 by tkong            ###   ########.fr       */
+/*   Created: 2022/12/07 16:14:58 by tkong             #+#    #+#             */
+/*   Updated: 2022/12/07 16:21:12 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACTOL_H
-# define FRACTOL_H
+#ifndef FRACTOL_BONUS_H
+# define FRACTOL_BONUS_H
 
 # define HEIGHT			300
 # define WIDTH			300

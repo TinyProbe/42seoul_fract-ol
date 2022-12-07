@@ -32,7 +32,19 @@ SRC			= $(addprefix $(SRC_DIR), $(SRC_LST))
 INC			= ./src/fractol.h
 
 SRC_B_DIR	= ./src/
-SRC_B_LST	= main_bonus.c
+SRC_B_LST	= main_bonus.c			\
+			  util_bonus.c			\
+			  execute_bonus.c		\
+			  pixel_bonus.c			\
+			  render_bonus.c		\
+			  quit_bonus.c			\
+			  event_bonus.c			\
+			  zoom_bonus.c			\
+			  iter_bonus.c			\
+			  mandelbrot_bonus.c	\
+			  julia_bonus.c			\
+			  mandelbar_bonus.c		\
+			  mlx_extend_bonus.c
 SRC_B		= $(addprefix $(SRC_B_DIR), $(SRC_B_LST))
 INC_B		= ./src/fractol_bonus.h
 

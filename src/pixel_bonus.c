@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbar.c                                        :+:      :+:    :+:   */
+/*   pixel_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkong <tkong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/07 15:49:08 by tkong             #+#    #+#             */
-/*   Updated: 2022/12/07 15:49:22 by tkong            ###   ########.fr       */
+/*   Created: 2022/12/07 16:15:20 by tkong             #+#    #+#             */
+/*   Updated: 2022/12/07 16:16:58 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	mandelbar(t_db *db)
+void	gen_color(t_db *db)
 {
-	db->frac.z = db->frac.c;
-	db->frac.it_cur = -1;
-	while (++(db->frac.it_cur) < db->frac.it_max
-		&& pow(db->frac.z.re, 2) + pow(db->frac.z.im, 2) <= pow(MAX_ABS, 2))
-	{
-		db->frac.z = make_cpx(
-				pow(db->frac.z.re, 2) - pow(db->frac.z.im, 2) + db->frac.c.re,
-				-2 * db->frac.z.re * db->frac.z.im + db->frac.c.im);
-	}
+	t_f64	ratio;
+
+	ratio = (t_f64) db->frac.itpp[WIDTH * db->pix.y + db->pix.x]
+		/ db->frac.it_max;
+	mlx_set_color(&(db->pix.color),
+		(t_u8)(9 * (1 - ratio) * pow(ratio, 3) * 255), RED);
+	mlx_set_color(&(db->pix.color),
+		(t_u8)(15 * pow((1 - ratio), 2) * pow(ratio, 2) * 255), GREEN);
+	mlx_set_color(&(db->pix.color),
+		(t_u8)(8.5 * pow((1 - ratio), 3) * ratio * 255), BLUE);
 }
