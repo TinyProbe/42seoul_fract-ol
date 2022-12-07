@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 16:14:58 by tkong             #+#    #+#             */
-/*   Updated: 2022/12/07 16:21:12 by tkong            ###   ########.fr       */
+/*   Updated: 2022/12/07 21:18:28 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ enum e_keycode
 	KEY_ESC		= 0x35,
 	KEY_0		= 0x1D,
 	KEY_MINUS	= 0x1B,
-	KEY_EQUAL	= 0x18,
+	KEY_PLUS	= 0x18,
 };
 
 enum e_mousecode

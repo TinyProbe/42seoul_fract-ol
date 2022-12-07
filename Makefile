@@ -1,7 +1,19 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/12/07 21:09:17 by tkong             #+#    #+#              #
+#    Updated: 2022/12/07 21:25:00 by tkong            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME		= fractol
 
 CC			= cc
-CCFLAG		= -Wall -Wextra -Werror -fsanitize=address
+CCFLAG		= -Wall -Wextra -Werror
 LIB			= $(FT) $(MLX)	\
 			  -framework OpenGL -framework AppKit
 RM			= rm -f
