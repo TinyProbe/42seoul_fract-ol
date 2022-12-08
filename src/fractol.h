@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkong <tkong@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/07 15:49:04 by tkong             #+#    #+#             */
-/*   Updated: 2022/12/07 15:49:22 by tkong            ###   ########.fr       */
+/*   Created: 2022/12/07 21:46:33 by tkong             #+#    #+#             */
+/*   Updated: 2022/12/07 21:47:42 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@
 # define WIDTH			300
 # define TRY_LIMIT		100
 # define MAX_ABS		2.0
-# define IT_MAX_INIT	50
+# define IT_MAX_INIT	100
 # define IT_MAX_MAX		300
 # define IT_MAX_MIN		1
+# define MOVE_UNIT		10
 
 # include "../ft/ft.h"
 # include "../mlx/mlx.h"
@@ -38,9 +39,17 @@ enum e_color
 enum e_keycode
 {
 	KEY_ESC		= 0x35,
+	KEY_SPACE	= 0x31,
 	KEY_0		= 0x1D,
 	KEY_MINUS	= 0x1B,
 	KEY_EQUAL	= 0x18,
+	KEY_UP		= 0x7E,
+	KEY_DOWN	= 0x7D,
+	KEY_LEFT	= 0x7B,
+	KEY_RIGHT	= 0x7C,
+	KEY_SHIFT	= 0x101,
+	KEY_REST	= 0x2B,
+	KEY_FSTOP	= 0x2F,
 };
 
 enum e_mousecode
@@ -74,6 +83,7 @@ typedef struct s_pix
 	t_i32	x;
 	t_i32	y;
 	t_i32	color;
+	t_u32	shift;
 }	t_pix;
 
 typedef struct s_frac
@@ -107,6 +117,7 @@ typedef struct s_db
 	t_dat	dat;
 	t_frac	frac;
 	t_pix	pix;
+	t_bool	key_state[0xffff];
 }	t_db;
 
 void	mlx_pixel_put2(t_dat *data, t_i32 x, t_i32 y, t_i32 color);
@@ -120,11 +131,20 @@ void	render(t_db *db);
 
 void	gen_color(t_db *db);
 
-t_i32	quit(void);
 t_i32	key_press(t_i32 code, t_db *db);
+t_i32	key_release(t_i32 keycode, t_db *db);
+t_i32	quit(void);
+t_i32	set_k(t_db *db);
 void	it_reset(t_db *db);
 void	it_incre(t_db *db);
 void	it_decre(t_db *db);
+void	screen_up(t_db *db);
+void	screen_down(t_db *db);
+void	screen_left(t_db *db);
+void	screen_right(t_db *db);
+void	color_lshift(t_db *db);
+void	color_rshift(t_db *db);
+
 t_i32	mouse_down(t_i32 code, t_i32 x, t_i32 y, t_db *db);
 void	zoom(t_i32 code, t_i32 x, t_i32 y, t_db *db);
 

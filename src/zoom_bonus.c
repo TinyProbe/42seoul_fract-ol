@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   zoom_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkong <tkong@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/07 16:15:32 by tkong             #+#    #+#             */
-/*   Updated: 2022/12/07 16:19:59 by tkong            ###   ########.fr       */
+/*   Created: 2022/12/08 17:02:00 by tkong             #+#    #+#             */
+/*   Updated: 2022/12/08 17:02:28 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractol_bonus.h"
 
 static t_f64	interpolate(t_f64 start, t_f64 end, t_f64 interp);
 

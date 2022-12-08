@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   julia_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkong <tkong@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/07 16:15:04 by tkong             #+#    #+#             */
-/*   Updated: 2022/12/07 16:16:58 by tkong            ###   ########.fr       */
+/*   Created: 2022/12/08 17:01:23 by tkong             #+#    #+#             */
+/*   Updated: 2022/12/08 17:02:28 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractol_bonus.h"
 
 void	julia(t_db *db)
 {

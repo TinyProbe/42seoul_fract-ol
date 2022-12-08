@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_extend_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkong <tkong@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/07 16:15:17 by tkong             #+#    #+#             */
-/*   Updated: 2022/12/07 16:16:58 by tkong            ###   ########.fr       */
+/*   Created: 2022/12/08 17:01:41 by tkong             #+#    #+#             */
+/*   Updated: 2022/12/08 17:02:28 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractol_bonus.h"
 
 void	mlx_pixel_put2(t_dat *data, t_i32 x, t_i32 y, t_i32 color)
 {

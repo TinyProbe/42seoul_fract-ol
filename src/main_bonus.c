@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkong <tkong@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/07 16:15:08 by tkong             #+#    #+#             */
-/*   Updated: 2022/12/07 16:16:58 by tkong            ###   ########.fr       */
+/*   Created: 2022/12/08 17:01:30 by tkong             #+#    #+#             */
+/*   Updated: 2022/12/08 17:02:28 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractol_bonus.h"
 
 static void		*which_fractol(t_i8 *av, t_db *db);
 static t_i32	error(void);
@@ -50,12 +50,12 @@ static t_i32	error(void)
 
 static void	manual(void)
 {
-	printf("# Usage:						\n");
-	printf("	$ ./fractal [NUM or NAME]	\n");
-	printf("								\n");
-	printf("# Available Fractal List:		\n");
-	printf("	1. mandelbrot				\n");
-	printf("	2. julia					\n");
-	printf("	3. mandelbar				\n");
-	printf("								\n");
+	printf("# Usage:                        \n");
+	printf("    $ ./fractal [NUM or NAME]   \n");
+	printf("                                \n");
+	printf("# Available Fractal List:       \n");
+	printf("    1. mandelbrot               \n");
+	printf("    2. julia                    \n");
+	printf("    3. mandelbar                \n");
+	printf("                                \n");
 }

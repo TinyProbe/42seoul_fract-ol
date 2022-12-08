@@ -34,8 +34,9 @@ SRC_LST		= main.c		\
 			  render.c		\
 			  quit.c		\
 			  event.c		\
-			  zoom.c		\
 			  iter.c		\
+			  screen.c		\
+			  zoom.c		\
 			  mandelbrot.c	\
 			  julia.c		\
 			  mandelbar.c	\
@@ -51,8 +52,9 @@ SRC_B_LST	= main_bonus.c			\
 			  render_bonus.c		\
 			  quit_bonus.c			\
 			  event_bonus.c			\
-			  zoom_bonus.c			\
 			  iter_bonus.c			\
+			  screen_bonus.c		\
+			  zoom_bonus.c			\
 			  mandelbrot_bonus.c	\
 			  julia_bonus.c			\
 			  mandelbar_bonus.c		\

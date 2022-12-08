@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkong <tkong@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/07 15:49:07 by tkong             #+#    #+#             */
-/*   Updated: 2022/12/07 15:49:22 by tkong            ###   ########.fr       */
+/*   Created: 2022/12/07 21:46:46 by tkong             #+#    #+#             */
+/*   Updated: 2022/12/07 21:47:42 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ static t_i32	error(void)
 
 static void	manual(void)
 {
-	printf("# Usage:						\n");
-	printf("	$ ./fractal [NUM or NAME]	\n");
-	printf("								\n");
-	printf("# Available Fractal List:		\n");
-	printf("	1. mandelbrot				\n");
-	printf("	2. julia					\n");
-	printf("	3. mandelbar				\n");
-	printf("								\n");
+	printf("# Usage:                        \n");
+	printf("    $ ./fractal [NUM or NAME]   \n");
+	printf("                                \n");
+	printf("# Available Fractal List:       \n");
+	printf("    1. mandelbrot               \n");
+	printf("    2. julia                    \n");
+	printf("    3. mandelbar                \n");
+	printf("                                \n");
 }

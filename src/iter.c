@@ -3,14 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   iter.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkong <tkong@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/07 15:49:06 by tkong             #+#    #+#             */
-/*   Updated: 2022/12/07 15:49:22 by tkong            ###   ########.fr       */
+/*   Created: 2022/12/07 21:46:39 by tkong             #+#    #+#             */
+/*   Updated: 2022/12/07 21:47:42 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+t_i32	set_k(t_db *db)
+{
+	t_i32	x;
+	t_i32	y;
+
+	if (db->key_state[KEY_SPACE] == FALSE)
+		return (0);
+	mlx_mouse_get_pos(db->win, &x, &y);
+	db->frac.k = make_cpx(
+			db->frac.min.re + x * db->frac.fact.re,
+			db->frac.max.im - y * db->frac.fact.im);
+	ft_bzero(db->frac.itpp, sizeof(t_i32) * WIDTH * HEIGHT);
+	render(db);
+	return (0);
+}
 
 void	it_reset(t_db *db)
 {
@@ -18,9 +34,11 @@ void	it_reset(t_db *db)
 	{
 		db->frac.it_max = IT_MAX_INIT;
 		printf("it_max : %d\n", db->frac.it_max);
-		ft_bzero(db->frac.itpp, sizeof(t_i32) * WIDTH * HEIGHT);
 		db->frac.max = make_cpx(MAX_ABS, MAX_ABS);
 		db->frac.min = make_cpx(-MAX_ABS, -MAX_ABS);
+		db->frac.k = make_cpx(-0.56, 0.48);
+		db->pix.shift = 0;
+		ft_bzero(db->frac.itpp, sizeof(t_i32) * WIDTH * HEIGHT);
 		render(db);
 	}
 }
