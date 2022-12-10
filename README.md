@@ -9,11 +9,11 @@ ESC: Exit
 \<: Color left shift.  
 \>: Color right shift.  
 SPACE: Rebind k(This only works if selected a julia fractal).  
-up: Screen move up.  
-down: Screen move down.  
-left: Screen move left.  
-right: Screen move right.  
+UP: Screen move up.  
+DOWN: Screen move down.  
+LEFT: Screen move left.  
+RIGHT: Screen move right.  
   
 [Mouse]  
-scroll up: Zoom in.  
-scroll down: Zoom out.
+Scroll up: Zoom in.  
+Scroll down: Zoom out.
