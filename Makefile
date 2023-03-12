@@ -6,14 +6,14 @@
 #    By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/07 21:09:17 by tkong             #+#    #+#              #
-#    Updated: 2022/12/07 21:25:00 by tkong            ###   ########.fr        #
+#    Updated: 2023/03/13 05:25:51 by tkong            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= fractol
 
 CC			= cc
-CCFLAG		= -Wall -Wextra -Werror
+CCFLAG		= -Wall -Wextra -Werror -O2
 LIB			= $(FT) $(MLX)	\
 			  -framework OpenGL -framework AppKit
 RM			= rm -f

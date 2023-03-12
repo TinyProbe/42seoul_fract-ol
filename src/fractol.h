@@ -6,21 +6,21 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 21:46:33 by tkong             #+#    #+#             */
-/*   Updated: 2022/12/07 21:47:42 by tkong            ###   ########.fr       */
+/*   Updated: 2023/03/13 05:19:13 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# define HEIGHT			300
-# define WIDTH			300
+# define HEIGHT			800
+# define WIDTH			800
 # define TRY_LIMIT		100
 # define MAX_ABS		2.0
 # define IT_MAX_INIT	50
-# define IT_MAX_MAX		300
+# define IT_MAX_MAX		1000
 # define IT_MAX_MIN		1
-# define MOVE_UNIT		10
+# define MOVE_UNIT		20
 
 # include "../ft/ft.h"
 # include "../mlx/mlx.h"
