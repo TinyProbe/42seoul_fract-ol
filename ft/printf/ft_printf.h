@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 09:59:09 by tkong             #+#    #+#             */
-/*   Updated: 2022/10/28 10:37:10 by tkong            ###   ########.fr       */
+/*   Updated: 2023/02/20 22:53:06 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ typedef struct s_elem
 	t_i32	neg;
 }	t_elem;
 
-t_i32	ft_vfprintf(const t_i8 *format, va_list ap);
-void	set_arg_value(va_list ap, t_elem *info);
+t_i32	ft_vfprintf(const t_i8 *format, va_list *ap);
+void	set_arg_value(va_list *ap, t_elem *info);
 t_i32	scan_flag(const t_i8 *form, t_i32 idx, t_elem *info);
 t_i32	scan_wid(const t_i8 *form, t_i32 idx, t_elem *info);
 t_i32	scan_prec(const t_i8 *form, t_i32 idx, t_elem *info);

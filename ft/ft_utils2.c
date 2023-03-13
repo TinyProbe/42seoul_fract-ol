@@ -51,7 +51,7 @@ t_f64	ft_sqrt(t_f64 n)
 	t_f64	prev;
 
 	l = 0;
-	r = 2ull << 32;
+	r = 1ull << 32;
 	prev = 0;
 	while (1)
 	{

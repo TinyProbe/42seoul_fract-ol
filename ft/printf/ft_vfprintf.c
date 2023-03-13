@@ -6,17 +6,17 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 09:59:07 by tkong             #+#    #+#             */
-/*   Updated: 2022/10/28 10:38:26 by tkong            ###   ########.fr       */
+/*   Updated: 2023/02/20 22:53:51 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 static void			init_info(t_elem *info);
-static const t_i8	*set_arg(const t_i8 *format, va_list ap, t_elem *info);
+static const t_i8	*set_arg(const t_i8 *format, va_list *ap, t_elem *info);
 static t_i32		cat_arg(t_i8 *buf, t_i32 idx, t_elem *info);
 
-t_i32	ft_vfprintf(const t_i8 *format, va_list ap)
+t_i32	ft_vfprintf(const t_i8 *format, va_list *ap)
 {
 	static t_elem	info;
 	static t_i8		buf[MAX_SIZE];
@@ -55,7 +55,7 @@ static void	init_info(t_elem *info)
 	info->neg = 0;
 }
 
-static const t_i8	*set_arg(const t_i8 *format, va_list ap, t_elem *info)
+static const t_i8	*set_arg(const t_i8 *format, va_list *ap, t_elem *info)
 {
 	t_i32	idx;
 
@@ -66,9 +66,9 @@ static const t_i8	*set_arg(const t_i8 *format, va_list ap, t_elem *info)
 	idx = scan_len(format, idx, info);
 	idx = scan_spec(format, idx, info);
 	if (info->wid & WID_STAR)
-		info->width = va_arg(ap, t_i32);
+		info->width = va_arg(*ap, t_i32);
 	if (info->prec & PREC_STAR)
-		info->precis = va_arg(ap, t_i32);
+		info->precis = va_arg(*ap, t_i32);
 	if (!(info->spec & SPEC_PERCENT))
 		if (!check_prec(info) || !check_len(info) || !check_spec(info)
 			|| !check_flag(info) || !check_wid(info)

@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 17:01:30 by tkong             #+#    #+#             */
-/*   Updated: 2022/12/08 17:02:28 by tkong            ###   ########.fr       */
+/*   Updated: 2023/03/13 12:54:41 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,11 @@ t_i32	main(t_i32 ac, t_i8 **av)
 
 static void	*which_fractol(t_i8 *av, t_db *db)
 {
-	if (ft_strcmp(av, "1") == EQUAL
-		|| ft_strcmp(av, "mandelbrot") == EQUAL)
+	if (!ft_strcmp(av, "1") || !ft_strcmp(av, "mandelbrot"))
 		db->frac.ftr = mandelbrot;
-	else if (ft_strcmp(av, "2") == EQUAL
-		|| ft_strcmp(av, "julia") == EQUAL)
+	else if (!ft_strcmp(av, "2") || !ft_strcmp(av, "julia"))
 		db->frac.ftr = julia;
-	else if (ft_strcmp(av, "3") == EQUAL
-		|| ft_strcmp(av, "mandelbar") == EQUAL)
+	else if (!ft_strcmp(av, "3") || !ft_strcmp(av, "mandelbar"))
 		db->frac.ftr = mandelbar;
 	return (db->frac.ftr);
 }

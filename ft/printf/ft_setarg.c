@@ -6,7 +6,7 @@
 /*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 09:59:01 by tkong             #+#    #+#             */
-/*   Updated: 2022/10/28 10:31:07 by tkong            ###   ########.fr       */
+/*   Updated: 2023/02/20 22:53:51 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 static void	stores(t_elem *info, const t_i8 *s);
 
-void	set_arg_value(va_list ap, t_elem *info)
+void	set_arg_value(va_list *ap, t_elem *info)
 {
 	if (info->spec & SPEC_D_OR_I)
-		itodec(info, va_arg(ap, t_i32));
+		itodec(info, va_arg(*ap, t_i32));
 	else if (info->spec & SPEC_U)
-		utodec(info, va_arg(ap, t_u32));
+		utodec(info, va_arg(*ap, t_u32));
 	else if (info->spec & SPEC_X)
-		ulltohex(info, va_arg(ap, t_u32), 0);
+		ulltohex(info, va_arg(*ap, t_u32), 0);
 	else if (info->spec & SPEC_X_UP)
-		ulltohex(info, va_arg(ap, t_u32), 1);
+		ulltohex(info, va_arg(*ap, t_u32), 1);
 	else if (info->spec & SPEC_C)
-		info->res[info->end++] = va_arg(ap, t_i32);
+		info->res[info->end++] = va_arg(*ap, t_i32);
 	else if (info->spec & SPEC_S)
-		stores(info, va_arg(ap, const t_i8 *));
+		stores(info, va_arg(*ap, const t_i8 *));
 	else if (info->spec & SPEC_P)
-		ptohex(info, va_arg(ap, void *));
+		ptohex(info, va_arg(*ap, void *));
 	else if (info->spec & SPEC_PERCENT)
 		info->res[info->end++] = '%';
 }

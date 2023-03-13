@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkong <tkong@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: tkong <tkong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/07 21:10:01 by tkong             #+#    #+#             */
-/*   Updated: 2022/12/07 21:10:06 by tkong            ###   ########.fr       */
+/*   Created: 2022/12/07 21:39:05 by tkong             #+#    #+#             */
+/*   Updated: 2023/03/06 02:04:09 by tkong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,19 @@ typedef unsigned long long	t_u64;
 typedef unsigned long int	t_usize;
 typedef char				t_bool;
 
-# define TRUE	1
-# define FALSE	0
-# define EQUAL	0
+# define TRUE		1
+# define FALSE		0
+# define STDIN__	0
+# define STDOUT__	1
+# define STDERR__	2
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1024
 # endif
 # define MAX_FILE 10000
-# define MAX_LEN 500000
+# define MAX_LEN 1000000
+
+# define CODE_SIZE	256
 
 typedef struct s_buf
 {
@@ -47,16 +51,26 @@ typedef struct s_buf
 	t_i32	len;
 	t_i32	fd;
 }	t_buf;
-
-typedef struct s_list
+typedef struct s_ll
 {
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+	void		*content;
+	struct s_ll	*next;
+}	t_ll;
+typedef struct s_node
+{
+	struct s_node	*l;
+	struct s_node	*r;
+	void			*e;
+}	t_node;
+typedef struct s_bdll
+{
+	t_node	*hd;
+	t_i32	len;
+}	t_bdll;
 
 void	ft_putchar_fd(t_i8 c, t_i32 fd);
-void	ft_putendl_fd(t_i8 *s, t_i32 fd);
-void	ft_putstr_fd(t_i8 *s, t_i32 fd);
+void	ft_putendl_fd(const t_i8 *s, t_i32 fd);
+void	ft_putstr_fd(const t_i8 *s, t_i32 fd);
 void	ft_putnbr_fd(t_i32 n, t_i32 fd);
 t_bool	ft_isalnum(t_i32 c);
 t_bool	ft_isalpha(t_i32 c);
@@ -66,15 +80,15 @@ t_bool	ft_isprint(t_i32 c);
 t_bool	ft_isspace(t_i32 c);
 t_bool	ft_islower(t_i32 c);
 t_bool	ft_isupper(t_i32 c);
-void	ft_lstadd_back(t_list **lst, t_list *new_);
-void	ft_lstadd_front(t_list **lst, t_list *new_);
-void	ft_lstclear(t_list **lst, void (*del)(void *));
-void	ft_lstdelone(t_list *lst, void (*del)(void *));
-void	ft_lstiter(t_list *lst, void (*f)(void *));
-t_list	*ft_lstnew(void *content);
-t_i32	ft_lstsize(t_list *lst);
-t_list	*ft_lstlast(t_list *lst);
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+void	ft_lstadd_back(t_ll **lst, t_ll *new_);
+void	ft_lstadd_front(t_ll **lst, t_ll *new_);
+void	ft_lstclear(t_ll **lst, void (*del)(void *));
+void	ft_lstdelone(t_ll *lst, void (*del)(void *));
+void	ft_lstiter(t_ll *lst, void (*f)(void *));
+t_ll	*ft_lstnew(void *content);
+t_i32	ft_lstsize(t_ll *lst);
+t_ll	*ft_lstlast(t_ll *lst);
+t_ll	*ft_lstmap(t_ll *lst, void *(*f)(void *), void (*del)(void *));
 void	*ft_memchr(const void *s, t_i32 c, size_t n);
 void	*ft_memset(void *s, t_i32 c, size_t n);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
@@ -88,6 +102,7 @@ t_i8	*ft_strrchr(const t_i8 *s, t_i32 c);
 t_i8	*ft_strnstr(const t_i8 *big, const t_i8 *little, size_t len);
 t_i32	ft_strcmp(const t_i8 *s1, const t_i8 *s2);
 t_i32	ft_strncmp(const t_i8 *s1, const t_i8 *s2, size_t n);
+size_t	ft_strcpy(t_i8 *dst, const t_i8 *src);
 size_t	ft_strlcpy(t_i8 *dst, const t_i8 *src, size_t size);
 size_t	ft_strlcat(t_i8 *dst, const t_i8 *src, size_t size);
 void	ft_striteri(t_i8 *s, void (*f)(t_u32, t_i8 *));
@@ -96,8 +111,11 @@ t_i8	*ft_strdup(const t_i8 *s1);
 t_i8	*ft_strndup(const t_i8 *s1, size_t n);
 t_i8	*ft_strjoin(t_i8 const *s1, t_i8 const *s2);
 t_i8	*ft_strtrim(t_i8 const *s1, t_i8 const *set);
+t_i32	ft_strdel(t_i8 *dst, const t_i8 *set);
 t_i8	*ft_substr(t_i8 const *s, t_u32 start, size_t len);
 t_i8	**ft_split(t_i8 const *s, t_i8 c);
+t_i8	**ft_split2(t_i8 const *s, const t_i8 *set);
+void	ft_delete_split(t_i8 **strs);
 void	ft_sort_i8(t_i8 *arr, t_i32 begin, t_i32 end);
 void	ft_sort_i16(t_i16 *arr, t_i32 begin, t_i32 end);
 void	ft_sort_i32(t_i32 *arr, t_i32 begin, t_i32 end);
@@ -113,6 +131,7 @@ void	ft_reverse(void *arr, t_i32 begin, t_i32 end, size_t siz);
 t_i32	ft_tolower(t_i32 c);
 t_i32	ft_toupper(t_i32 c);
 t_i32	ft_stoi(const t_i8 *str);
+t_f32	ft_stof(const t_i8 *str);
 t_i32	ft_atoi(const t_i8 *str);
 t_i8	*ft_itoa(t_i32 n);
 t_f64	ft_abs(t_f64 n);
@@ -127,5 +146,15 @@ t_f64	ft_sqrt(t_f64 n);
 t_i32	ft_isprime(t_u64 n);
 t_i32	ft_printf(const t_i8 *format, ...);
 t_i8	*ft_gnl(t_i32 fd);
+void	ft_pushf(t_bdll *bdll, void *e);
+void	ft_pushb(t_bdll *bdll, void *e);
+void	*ft_popf(t_bdll *bdll);
+void	*ft_popb(t_bdll *bdll);
+void	*ft_popat(t_bdll *bdll, t_i32 idx);
+void	*ft_front(t_bdll *bdll);
+void	*ft_back(t_bdll *bdll);
+t_node	*ft_search(t_bdll *bdll, t_i32 idx);
+void	*ft_at(t_bdll *bdll, t_i32 idx);
+void	*ft_setat(t_bdll *bdll, t_i32 idx, void *e);
 
 #endif
